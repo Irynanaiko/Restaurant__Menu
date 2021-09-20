@@ -1,0 +1,31 @@
+<header class="header">
+    <div class="header__info">
+        <ul class="header__social">
+            <li class="header__social_item">
+                <a href="#">
+                    <img src="../../../assets/img/facebook.png" height=30 width=30 alt="facebook">
+                </a>
+            </li>
+            <li class="header__social_item">
+                <a href="#">
+                    <img src="../../../assets/img/insta.png" height=30 width=30 alt="instagram">
+                </a>
+            </li>
+            <li class="header__social_item">
+                <a>
+                    <img src="../../../assets/img/twitter.png" height=32 width=32 alt="twitter">
+                </a>
+            </li>
+            <button class="header__social_item btn_print">
+                <img src="../../../assets/img/print.png" height=30 width=30>
+            </button>
+        </ul>
+        <div class="header__logo">
+            <img src="../../../assets/img/logo.png" height=70 width=230>
+        </div>
+        <div *ngFor="let i of info" class="wifi" >
+            <img src="../../../assets/img/wifi.png" alt="wifi">
+            <span>{{i.wifi}}</span>
+        </div>
+    </div>
+</header>

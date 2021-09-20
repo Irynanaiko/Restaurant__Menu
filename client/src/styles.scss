@@ -1,0 +1,12 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "./app/styles/variable";
+
+* {
+  font-family: "Open Sans";
+  color: #fff;
+}
+body {
+  max-width: 1900px;
+  margin: 0 auto;
+  background-color: $bg-color;
+}
