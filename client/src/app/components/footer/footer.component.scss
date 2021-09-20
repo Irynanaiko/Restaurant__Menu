@@ -1,0 +1,101 @@
+@import "../../styles/variable";
+@import "../../styles/mixins";
+
+// :host {
+//   flex-shrink: 0;
+// }
+
+.footer {
+  width: 100%;
+  height: 7%;
+  padding: 20px 20px;
+  background-color: $bg-color;
+  color: $main-color;
+  // margin-bottom: 0 !important;
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include mQ(610px) {
+      flex-direction: column;
+    }
+  }
+  &__list {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style-type: none;
+  }
+  &__social {
+    color: #fff;
+    font-weight: 20px;
+    font-weight: bold;
+    @include mQ(610px) {
+      margin-top: 15px;
+      order: 2;
+    }
+    &_item {
+      padding-top: 10px;
+      &:not(:first-child) {
+        margin-left: 10px;
+        @include mQ(610px) {
+          margin-left: 30px;
+        }
+      }
+      img {
+        width: 27px;
+        height: 27px;
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+        @include mQ(610px) {
+          width: 30px;
+          height: 30px;
+        }
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+  &__logo {
+    @include mQ(610px) {
+      order: -1;
+    }
+    img {
+      width: 180px;
+      height: 50px;
+    }
+  }
+  &__address {
+    color: #fff;
+    font-weight: bold;
+    @include mQ(610px) {
+      order: 1;
+      margin-top: 15px;
+    }
+
+    &_item {
+      margin-top: 10px;
+      font-weight: bold;
+      img {
+        margin-right: 15px;
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+  &__github {
+    margin-top: 20px;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      transform: scale(1.1);
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+    }
+  }
+}
