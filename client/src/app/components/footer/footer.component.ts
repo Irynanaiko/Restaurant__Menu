@@ -16,8 +16,10 @@ export class FooterComponent implements OnInit {
     this.getInfoData();
   }
 
-  async getInfoData(): Promise<void> {
-    this.info = await this.infoService.getInfoData().toPromise();
-    console.log(this.info);
+  getInfoData(): void {
+    this.infoService.getInfoData().subscribe((data) => {
+      this.info = data;
+      console.log(this.info);
+    });
   }
 }

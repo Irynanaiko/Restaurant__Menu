@@ -23,15 +23,17 @@ export class MainComponent implements OnInit {
     this.getDishesData();
   }
 
-  async getCategoriesData(): Promise<void> {
-    this.categoriesData = await this.categoriesService
-      .getCategoriesData()
-      .toPromise();
-    console.log(this.categoriesData);
+  getCategoriesData(): void {
+    this.categoriesService.getCategoriesData().subscribe((data) => {
+      this.categoriesData = data;
+      console.log(this.categoriesData);
+    });
   }
 
-  async getDishesData(): Promise<void> {
-    this.dishesData = await this.dishesService.getDishesData().toPromise();
+  getDishesData(): void {
+    this.dishesService.getDishesData().subscribe((data) => {
+      this.dishesData = data;
+    });
     console.log(this.dishesData);
   }
 }

@@ -6,7 +6,6 @@ import { InfoService } from 'src/app/core/services/info.service';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  // providers: [InfoService],
 })
 export class HeaderComponent implements OnInit {
   // info: Array<Info>;
@@ -15,13 +14,13 @@ export class HeaderComponent implements OnInit {
   constructor(private infoService: InfoService) {}
 
   ngOnInit(): void {
-    // console.log(this.infoService.getInfoData());
-
     this.getInfoData();
   }
 
-  async getInfoData(): Promise<void> {
-    this.info = await this.infoService.getInfoData().toPromise();
-    console.log(this.info);
+  getInfoData(): void {
+    this.infoService.getInfoData().subscribe((data) => {
+      this.info = data;
+      console.log(this.info);
+    });
   }
 }
