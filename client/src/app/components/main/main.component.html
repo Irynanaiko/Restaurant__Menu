@@ -1,0 +1,31 @@
+<main class="main">
+    <div class="main__title">Меню</div>
+   <div class="container">
+        <ul class="categories__list">
+            <li class="categories__list_item">ВСІ</li>
+            <app-categories-items 
+                *ngFor="let category of categoriesData" 
+                [category]="category">
+            </app-categories-items>
+        </ul>
+   </div> 
+
+    <div class="dishes container">
+        <ul class="row">
+            <li class="dish col" *ngFor="let dish of dishesData">
+                <img class="dish__img" src="{{dish.img}}" alt="salad">
+                <div class="dish__title">{{dish.name}}</div>
+                
+                <div class="dish__footer">
+                    <div class="dish__descr">{{dish.descr}}</div>
+                    <div class="dish__bottom">
+                        <span class="dish__weigth">{{dish.weight}}</span>
+                        <span class="dish__price">{{dish.price}}</span>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+</main>
