@@ -25,6 +25,7 @@
   justify-content: center;
   align-items: center;
   list-style-type: none;
+  padding-left: 0;
   @include mQ(1200px) {
     flex-wrap: wrap;
   }
@@ -46,6 +47,9 @@
 .dishes {
   margin-top: 40px;
   // display: flex;
+  &__list {
+    padding-left: 0;
+  }
 }
 .dish {
   width: 340px;
