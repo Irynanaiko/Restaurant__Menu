@@ -1,4 +1,8 @@
   
-<li    class="categories__list_item">
+<li class="categories__list_item"
+
+    (click)="onCategoryClick(category.id)"
+    [class.active]="category.id === category.id"
+>
     {{category.name}}
 </li>

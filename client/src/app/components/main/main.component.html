@@ -1,12 +1,25 @@
+<app-header></app-header>
 <main class="main">
     <div class="main__title">Меню</div>
    <div class="container">
-        <ul class="categories__list">
-            <li class="categories__list_item">ВСІ</li>
-            <app-categories-items 
+        <ul class="categories__list " >
+            <li class="categories__list_item "
+            (click)="getDishesData()"
+            >ВСІ</li>
+
+            <li class="categories__list_item"
+            *ngFor="let category of categoriesData"
+            (click)="getDishesByCategory(category.id)"
+            [class.active]="category.id === categoriesData.id"
+            >
+                {{category.name}}</li>
+           
+            <!-- <app-categories-items 
+                [onCategoryClick]="getDishesByCategory"
                 *ngFor="let category of categoriesData" 
-                [category]="category">
-            </app-categories-items>
+                [category]="category"
+                >
+            </app-categories-items> -->
         </ul>
    </div> 
 
@@ -29,3 +42,5 @@
 
     </div>
 </main>
+
+<app-footer></app-footer>

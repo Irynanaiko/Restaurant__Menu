@@ -26,7 +26,6 @@ export class MainComponent implements OnInit {
   getCategoriesData(): void {
     this.categoriesService.getCategoriesData().subscribe((data) => {
       this.categoriesData = data;
-      console.log(this.categoriesData);
     });
   }
 
@@ -34,6 +33,21 @@ export class MainComponent implements OnInit {
     this.dishesService.getDishesData().subscribe((data) => {
       this.dishesData = data;
     });
-    console.log(this.dishesData);
+  }
+
+  // public getDishesByCategory = (categoryId: string): void => {
+  //   this.dishesService
+  //     .getDishesByCategory(categoryId)
+  //     .subscribe((data: any) => {
+  //       this.dishesData = data;
+  //     });
+  // };
+
+  getDishesByCategory(categoryId): void {
+    this.dishesService
+      .getDishesByCategory(categoryId)
+      .subscribe((data: any) => {
+        this.dishesData = data;
+      });
   }
 }
