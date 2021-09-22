@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{modalHeader}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalHide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+ 
+  <form [formGroup]="newCategoryForm" class="app-new-category" (ngSubmit)="onSubmit()">
+    <div class="modal-body">
+ 
+ 
+        <div class="form-group">
+ 
+            <input class="form-control" 
+                placeholder="Category name" 
+                type="text" 
+                name="title" 
+                formControlName="name" >
+        </div>
+    </div>
+ 
+    <footer class=" modal-footer d-flex">
+      <button class="btn btn-secondary" (click)="modalHide()" type="button">
+        Cancel
+      </button>
+      <button class="btn btn-primary" (click)="onSubmit()" type="submit">
+        Save
+      </button>
+    </footer>
+ 
+  </form>

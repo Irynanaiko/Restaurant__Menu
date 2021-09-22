@@ -12,10 +12,31 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MainComponent } from './components/main/main.component';
 import { DishesService } from './core/services/dishes.service';
 import { CategoriesItemsComponent } from './components/main/categories-items/categories-items.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { NewCategoryComponent } from './components/admin/new-category/new-category.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, MainComponent, CategoriesItemsComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    MainComponent,
+    CategoriesItemsComponent,
+    AdminComponent,
+    PageNotFoundComponent,
+    NewCategoryComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ModalModule.forRoot(),
+  ],
   providers: [InfoService, CategoriesService, DishesService],
   bootstrap: [AppComponent],
 })
