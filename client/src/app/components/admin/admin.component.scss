@@ -25,6 +25,7 @@
   justify-content: center;
   align-items: center;
   list-style-type: none;
+  padding-left: 0;
   @include mQ(1200px) {
     flex-wrap: wrap;
   }
@@ -45,7 +46,11 @@
 
 .dishes {
   margin-top: 40px;
+
   // display: flex;
+  &__list {
+    padding-left: 0;
+  }
 }
 .dish {
   width: 340px;
@@ -98,4 +103,13 @@
       align-items: center;
     }
   }
+}
+.edit__btn {
+  width: 45px;
+  height: 25px;
+  padding: 7px;
+  background: url(../../../assets/img/edit.png) no-repeat center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
 }

@@ -72,4 +72,19 @@ export class AdminComponent implements OnInit {
       )
     );
   }
+
+  editCategory(category: Categories): void {
+    const initialState = {
+      category,
+      modalHeader: 'Редагувати категорію',
+      save: this.updateCategory.bind(this),
+    };
+    console.log(this);
+    this.openModal(initialState);
+  }
+
+  private updateCategory(category: Categories): void {
+    this.categoriesService.updateCategory(category.id, category);
+    console.log(category);
+  }
 }

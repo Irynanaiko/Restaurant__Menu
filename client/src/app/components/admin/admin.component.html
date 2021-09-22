@@ -14,6 +14,7 @@
                 [class.active]="category.id === categoriesData.id"
             >
                 {{category.name}}
+                <button class="edit__btn" (click)="editCategory(category)"></button>
             </li>
 
             <li class="categories__list_item" 
@@ -31,7 +32,7 @@
    </div> 
 
     <div class="dishes container">
-        <ul class="row">
+        <ul class="row dishes__list">
             <li class="dish col" *ngFor="let dish of dishesData">
                 <img class="dish__img" src="{{dish.img}}" alt="salad">
                 <div class="dish__title">{{dish.name}}</div>

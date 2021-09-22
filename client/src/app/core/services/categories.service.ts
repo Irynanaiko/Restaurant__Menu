@@ -33,4 +33,10 @@ export class CategoriesService {
       .subscribe(() => this.getCategoriesData());
     console.log(newCategory);
   }
+
+  updateCategory(categoryId: string, newCategory: Categories): void {
+    this.http
+      .patch(`${this.url}/${categoryId}`, newCategory)
+      .subscribe(() => this.getCategoriesData());
+  }
 }

@@ -30,17 +30,18 @@ export class NewCategoryComponent implements OnInit {
         this.category?.name || null,
         // [Validators.required, Validators.minLength(3)],
       ],
+      // id: [this.category?.id || null],
     });
   }
 
   onSubmit(): void {
-    this.isSubmit = true;
+    // this.isSubmit = true;
 
-    if (this.newCategoryForm.invalid) {
-      return;
-    }
+    // if (this.newCategoryForm.invalid) {
+    //   return;
+    // }
 
-    this.isSubmit = false;
+    // this.isSubmit = false;
 
     this.save(this.newCategoryForm.value);
     this.modalHide();
