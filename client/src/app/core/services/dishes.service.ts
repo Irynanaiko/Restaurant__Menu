@@ -8,22 +8,15 @@ import { Dishes } from '../interfaces/dishes.interface';
   providedIn: 'root',
 })
 export class DishesService {
-  // infoData = new BehaviorSubject<Array<Info>>(null);
-
   private url = environment.url + '/items';
 
-  constructor(private http: HttpClient) {
-    // this.getInfoData();
-  }
-
-  // getInfoData(): void {
-  //   this.http.get<Array<Info>>(this.url).subscribe((data) => {
-  //     this.infoData.next(data);
-  //     console.log(data);
-  //   });
-  // }
+  constructor(private http: HttpClient) {}
 
   getDishesData(): Observable<Array<Dishes>> {
     return this.http.get<Array<Dishes>>(this.url);
+  }
+
+  getDishesByCategory(categoryId: string): Observable<Dishes> {
+    return this.http.get<Dishes>(`${this.url}/${categoryId}`);
   }
 }

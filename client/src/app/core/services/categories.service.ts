@@ -26,4 +26,11 @@ export class CategoriesService {
   getCategoriesData(): Observable<Array<Categories>> {
     return this.http.get<Array<Categories>>(this.url);
   }
+
+  addNewCategory(newCategory: Categories): void {
+    this.http
+      .post(this.url, newCategory)
+      .subscribe(() => this.getCategoriesData());
+    console.log(newCategory);
+  }
 }
