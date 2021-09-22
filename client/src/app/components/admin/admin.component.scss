@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import "../../styles/variable";
+@import "../../styles/mixins";
+
+.main {
+  background-image: url("../../../assets/img/bg.jpg");
+  padding: 10px 20px;
+  //   background-color: #2e2e2e;
+  //   background: linear-gradient(
+  //     180deg,
+  //     rgba(46, 46, 46, 1) 13%,
+  //     rgba(31, 31, 31, 0.9839286056219363) 84%
+  //   );
+
+  &__title {
+    color: $main-color;
+    font-size: 52px;
+    font-family: "Lobster", cursive;
+    text-align: center;
+  }
+}
+
+.categories__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  @include mQ(1200px) {
+    flex-wrap: wrap;
+  }
+
+  &_item {
+    border: 1px solid #fff;
+    padding: 7px;
+    font-size: 18px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      color: $main-color;
+      border: 1px solid $main-color;
+    }
+  }
+}
+
+.dishes {
+  margin-top: 40px;
+  // display: flex;
+}
+.dish {
+  width: 340px;
+  // height: 540px;
+  padding: 20px;
+  text-align: center;
+  list-style-type: none;
+  cursor: pointer;
+  transition: all 0.5s ease-in;
+  &__img {
+    width: 300px;
+    height: 190px;
+  }
+
+  &__title {
+    margin-top: 50px;
+    font-family: "Lobster", cursive;
+    color: $main-color;
+    font-size: 24px;
+  }
+
+  &__footer {
+    display: none;
+  }
+
+  &:hover {
+    height: 500px;
+    background-color: #000;
+    .dish__footer {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .dish__descr {
+      margin-top: 20px;
+    }
+    .dish__weigth {
+      font-size: 18px;
+    }
+
+    .dish__price {
+      font-size: 20px;
+      color: $main-color;
+    }
+    .dish__bottom {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}

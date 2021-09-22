@@ -1,1 +1,55 @@
-<p>admin works!</p>
+<app-header></app-header>
+
+<main class="main">
+    <div class="main__title">Меню</div>
+   <div class="container">
+        <ul class="categories__list " >
+            <li class="categories__list_item "
+            (click)="getDishesData()"
+            >ВСІ</li>
+
+            <li class="categories__list_item"
+                *ngFor="let category of categoriesData"
+                (click)="getDishesByCategory(category.id)"
+                [class.active]="category.id === categoriesData.id"
+            >
+                {{category.name}}
+            </li>
+
+            <li class="categories__list_item" 
+                (click)="createNewCategory()"> 
+                +
+            </li>
+           
+            <!-- <app-categories-items 
+                [onCategoryClick]="getDishesByCategory"
+                *ngFor="let category of categoriesData" 
+                [category]="category"
+                >
+            </app-categories-items> -->
+        </ul>
+   </div> 
+
+    <div class="dishes container">
+        <ul class="row">
+            <li class="dish col" *ngFor="let dish of dishesData">
+                <img class="dish__img" src="{{dish.img}}" alt="salad">
+                <div class="dish__title">{{dish.name}}</div>
+                
+                <div class="dish__footer">
+                    <div class="dish__descr">{{dish.descr}}</div>
+                    <div class="dish__bottom">
+                        <span class="dish__weigth">{{dish.weight}}</span>
+                        <span class="dish__price">{{dish.price}}</span>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+</main>
+
+
+
+<app-footer></app-footer>
