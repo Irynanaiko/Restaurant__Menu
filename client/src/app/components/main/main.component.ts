@@ -23,14 +23,20 @@ export class MainComponent implements OnInit {
     this.getDishesData();
   }
 
-  getCategoriesData(): void {
-    this.categoriesService.getCategoriesData().subscribe((data) => {
+  // getCategoriesData(): void {
+  //   this.categoriesService.getCategoriesData().subscribe((data) => {
+  //     this.categoriesData = data;
+  //   });
+  // }
+
+  private getCategoriesData(): void {
+    this.categoriesService.categoriesData.subscribe((data) => {
       this.categoriesData = data;
     });
   }
 
   getDishesData(): void {
-    this.dishesService.getDishesData().subscribe((data) => {
+    this.dishesService.dishesData.subscribe((data) => {
       this.dishesData = data;
     });
   }

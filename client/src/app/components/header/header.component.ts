@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getInfoData(): void {
-    this.infoService.getInfoData().subscribe((data) => {
+    this.infoService.infoData.subscribe((data) => {
       this.info = data;
       console.log(this.info);
     });

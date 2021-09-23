@@ -9,22 +9,28 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class InfoService {
-  // infoData = new BehaviorSubject<Array<Info>>(null);
+  infoData = new BehaviorSubject<Array<Info>>(null);
 
   private url = environment.url + '/info';
 
   constructor(private http: HttpClient) {
-    // this.getInfoData();
+    this.getInfoData();
   }
 
-  // getInfoData(): void {
-  //   this.http.get<Array<Info>>(this.url).subscribe((data) => {
-  //     this.infoData.next(data);
-  //     console.log(data);
-  //   });
+  private getInfoData(): void {
+    this.http.get<Array<Info>>(this.url).subscribe((data) => {
+      this.infoData.next(data);
+      console.log(data);
+    });
+  }
+
+  // getInfoData(): Observable<Array<Info>> {
+  //   return this.http.get<Array<Info>>(this.url);
   // }
 
-  getInfoData(): Observable<Array<Info>> {
-    return this.http.get<Array<Info>>(this.url);
+  updateRestaurantInfo(infoId: string, newInfo: Info): void {
+    this.http
+      .patch(`${this.url}/${infoId}`, newInfo)
+      .subscribe(() => this.getInfoData());
   }
 }

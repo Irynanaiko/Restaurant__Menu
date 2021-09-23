@@ -3,17 +3,18 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoriesService {
-  // infoData = new BehaviorSubject<Array<Info>>(null);
+  categoriesData = new BehaviorSubject<Array<Categories>>(null);
 
   private url = environment.url + '/categories';
 
   constructor(private http: HttpClient) {
-    // this.getInfoData();
+    this.getCategoriesData();
   }
 
   // getInfoData(): void {
@@ -23,8 +24,14 @@ export class CategoriesService {
   //   });
   // }
 
-  getCategoriesData(): Observable<Array<Categories>> {
-    return this.http.get<Array<Categories>>(this.url);
+  // getCategoriesData(): Observable<Array<Categories>> {
+  //   return this.http.get<Array<Categories>>(this.url);
+  // }
+
+  private getCategoriesData(): void {
+    this.http.get<Array<Categories>>(this.url).subscribe((data) => {
+      this.categoriesData.next(data);
+    });
   }
 
   addNewCategory(newCategory: Categories): void {
