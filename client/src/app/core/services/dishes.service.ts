@@ -1,8 +1,8 @@
+import { Dishes } from './../interfaces/dishes.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Dishes } from '../interfaces/dishes.interface';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -29,5 +29,16 @@ export class DishesService {
 
   getDishesByCategory(categoryId: string): Observable<Dishes> {
     return this.http.get<Dishes>(`${this.url}/${categoryId}`);
+  }
+
+  addNewDish(newDish: Dishes): void {
+    this.http.post(this.url, newDish).subscribe(() => this.getDishesData());
+    console.log(newDish);
+  }
+
+  updateDish(dishId: string, newDish: Dishes): void {
+    this.http
+      .patch(`${this.url}/${dishId}`, newDish)
+      .subscribe(() => this.getDishesData());
   }
 }

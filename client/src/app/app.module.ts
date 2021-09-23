@@ -17,6 +17,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { NewCategoryComponent } from './components/admin/new-category/new-category.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { UpdateInfoComponent } from './components/admin/update-info/update-info.component';
+import { NewDishComponent } from './components/admin/new-dish/new-dish.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AdminComponent,
     PageNotFoundComponent,
     NewCategoryComponent,
+    UpdateInfoComponent,
+    NewDishComponent,
   ],
   imports: [
     BrowserModule,

@@ -38,7 +38,6 @@ export class CategoriesService {
     this.http
       .post(this.url, newCategory)
       .subscribe(() => this.getCategoriesData());
-    console.log(newCategory);
   }
 
   updateCategory(categoryId: string, newCategory: Categories): void {

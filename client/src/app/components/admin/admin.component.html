@@ -21,10 +21,14 @@
                 (click)="createNewCategory()"> 
                 Додати категорію
             </li>
-            <li class="categories__list_item">
+            <li class="categories__list_item"
+                (click)="updateInfo()"
+            >
                 Редагувати інформацію
             </li>
-            <li class="categories__list_item">
+            <li class="categories__list_item"
+            (click)="createNewDish()"
+            >
                 Додати нову страву
             </li>
         </ul>
@@ -34,6 +38,17 @@
     <div class="dishes container">
         <ul class="row dishes__list">
             <li class="dish col" *ngFor="let dish of dishesData">
+               <div class="btns">
+                    <button class="btn edit"
+                    (click)="editDish(dish)"
+                    >
+                        <img src="../../../assets/img/edit.png">
+                    </button>
+                    <button class="btn delete">
+                        <img src="../../../assets/img/delete.png">
+                    </button>
+               </div>
+
                 <img class="dish__img" src="{{dish.img}}" alt="salad">
                 <div class="dish__title">{{dish.name}}</div>
                 

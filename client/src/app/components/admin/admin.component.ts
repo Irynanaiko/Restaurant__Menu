@@ -1,11 +1,14 @@
+import { InfoService } from 'src/app/core/services/info.service';
 import { Component, OnInit } from '@angular/core';
 import { Dishes } from './../../core/interfaces/dishes.interface';
 import { CategoriesService } from './../../core/services/categories.service';
 import { DishesService } from 'src/app/core/services/dishes.service';
 import { Categories } from 'src/app/core/interfaces';
+import { Info } from 'src/app/core/interfaces';
 
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { NewCategoryComponent } from './new-category/new-category.component';
+import { NewDishComponent } from './new-dish/new-dish.component';
 
 @Component({
   selector: 'app-admin',
@@ -15,27 +18,35 @@ import { NewCategoryComponent } from './new-category/new-category.component';
 export class AdminComponent implements OnInit {
   categoriesData: Array<Categories>;
   dishesData: Array<Dishes>;
+  info: Array<Info>;
   modalRef: BsModalRef;
 
   constructor(
     private categoriesService: CategoriesService,
     private dishesService: DishesService,
+    private infoService: InfoService,
     private modalService: BsModalService
   ) {}
 
   ngOnInit(): void {
     this.getCategoriesData();
     this.getDishesData();
+    this.getInfoData();
   }
-
-  getCategoriesData(): void {
-    this.categoriesService.getCategoriesData().subscribe((data) => {
+  private getCategoriesData(): void {
+    this.categoriesService.categoriesData.subscribe((data) => {
       this.categoriesData = data;
     });
   }
 
+  // getCategoriesData(): void {
+  //   this.categoriesService.getCategoriesData().subscribe((data) => {
+  //     this.categoriesData = data;
+  //   });
+  // }
+
   getDishesData(): void {
-    this.dishesService.getDishesData().subscribe((data) => {
+    this.dishesService.dishesData.subscribe((data) => {
       this.dishesData = data;
     });
   }
@@ -86,5 +97,55 @@ export class AdminComponent implements OnInit {
   private updateCategory(category: Categories): void {
     this.categoriesService.updateCategory(category.id, category);
     console.log(category);
+  }
+
+  private getInfoData(): void {
+    this.infoService.infoData.subscribe((data) => {
+      this.info = data;
+      console.log(this.info);
+    });
+  }
+
+  createNewDish(): void {
+    const initialState = {
+      modalHeader: 'Додати нову страву',
+      save: this.addNewDish.bind(this),
+    };
+    this.openModalForDish(initialState);
+  }
+
+  private addNewDish(newDish: Dishes): void {
+    this.dishesService.addNewDish(newDish);
+  }
+
+  editDish(dish: Dishes): void {
+    const initialState = {
+      dish,
+      modalHeader: 'Редагувати страву',
+      save: this.updateDish.bind(this),
+    };
+    this.openModalForDish(initialState);
+  }
+
+  private updateDish(dish: Dishes): void {
+    this.dishesService.updateDish(dish.id, dish);
+    console.log(dish);
+  }
+
+  private openModalForDish(initialState: Partial<any>): void {
+    this.modalRef = this.modalService.show(
+      NewDishComponent,
+      Object.assign(
+        {},
+        {
+          initialState,
+          ignoreBackdropClick: true,
+        }
+      )
+    );
+  }
+
+  updateInfo(): void {
+    console.log(this.info);
   }
 }

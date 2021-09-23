@@ -1,0 +1,68 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{modalHeader}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalHide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+ 
+  <form [formGroup]="newDishForm" class="app-dish-category" (ngSubmit)="onSubmit()">
+    <div class="modal-body">
+ 
+ 
+        <div class="form-group">
+ 
+            <input class="form-control" 
+                placeholder="Назва страви" 
+                type="text" 
+                name="title" 
+                formControlName="name" 
+            >
+
+            <input class="form-control" 
+                placeholder="url" 
+                type="text" 
+                name="title" 
+                formControlName="img" 
+            >
+
+            <input class="form-control" 
+                placeholder="Ціна страви" 
+                type="text" 
+                name="price" 
+                formControlName="price" 
+            >
+
+            <input class="form-control" 
+              placeholder="Вага страви" 
+              type="text" 
+              name="weight" 
+              formControlName="weight" 
+            >
+            <textarea
+              class="form-control" 
+              placeholder="Опис страви" 
+              type="text" 
+              name="descr" 
+              formControlName="descr"
+            >
+            </textarea>
+
+            <input class="form-control" 
+              placeholder="Id категорії" 
+              type="text" 
+              name="categoryId" 
+              formControlName="categoryId" 
+            >
+        </div>
+    </div>
+ 
+    <footer class=" modal-footer d-flex">
+      <button class="btn btn-secondary" (click)="modalHide()" type="button">
+        Cancel
+      </button>
+      <button class="btn btn-primary" (click)="onSubmit()" type="submit">
+        Save
+      </button>
+    </footer>
+ 
+  </form>
