@@ -18,10 +18,15 @@ export class NewCategoryComponent implements OnInit {
   isSubmit = false;
   modalHeader: string;
   category: Categories;
+
   constructor(private fb: FormBuilder, private bsmodalRef: BsModalRef) {}
 
   ngOnInit(): void {
     this.createNewCategoryForm();
+  }
+
+  get nameControl(): any {
+    return this.newCategoryForm.get('name') as FormControl;
   }
 
   private createNewCategoryForm(): void {
@@ -29,7 +34,7 @@ export class NewCategoryComponent implements OnInit {
       this.newCategoryForm = this.fb.group({
         name: [
           this.category?.name || null,
-          // [Validators.required, Validators.minLength(3)],
+          [Validators.required, Validators.minLength(3)],
         ],
 
         id: [this.category.id || null],
@@ -38,20 +43,20 @@ export class NewCategoryComponent implements OnInit {
       this.newCategoryForm = this.fb.group({
         name: [
           this.category?.name || null,
-          // [Validators.required, Validators.minLength(3)],
+          [Validators.required, Validators.minLength(3)],
         ],
       });
     }
   }
 
   onSubmit(): void {
-    // this.isSubmit = true;
+    this.isSubmit = true;
 
-    // if (this.newCategoryForm.invalid) {
-    //   return;
-    // }
+    if (this.newCategoryForm.invalid) {
+      return;
+    }
 
-    // this.isSubmit = false;
+    this.isSubmit = false;
 
     this.save(this.newCategoryForm.value);
     this.modalHide();

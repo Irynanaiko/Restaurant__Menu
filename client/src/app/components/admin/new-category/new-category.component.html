@@ -8,14 +8,24 @@
   <form [formGroup]="newCategoryForm" class="app-new-category" (ngSubmit)="onSubmit()">
     <div class="modal-body">
  
- 
         <div class="form-group">
  
             <input class="form-control" 
                 placeholder="Ім'я категорії" 
                 type="text" 
-                name="title" 
-                formControlName="name" >
+                name="name" 
+                formControlName="name" 
+                [ngClass]="{
+                  'is-invalid': nameControl.invalid && isSubmit,
+                  'is-valid': nameControl.valid && isSubmit
+                }"
+              >
+
+              <div class="invalid-feedback" *ngIf="nameControl.errors && isSubmit">
+                <span *ngIf="nameControl.errors.required">Це поле є обов'язковим.</span>
+                <span *ngIf="nameControl.errors.minlength">Текст має мати більше ніж
+                  {{nameControl.errors['minlength']['requiredLength']}} символи.</span>
+              </div>
         </div>
     </div>
  
