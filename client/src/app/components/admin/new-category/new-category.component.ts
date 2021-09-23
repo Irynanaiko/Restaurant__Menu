@@ -25,13 +25,23 @@ export class NewCategoryComponent implements OnInit {
   }
 
   private createNewCategoryForm(): void {
-    this.newCategoryForm = this.fb.group({
-      name: [
-        this.category?.name || null,
-        // [Validators.required, Validators.minLength(3)],
-      ],
-      // id: [this.category?.id || null],
-    });
+    if (this.category?.id) {
+      this.newCategoryForm = this.fb.group({
+        name: [
+          this.category?.name || null,
+          // [Validators.required, Validators.minLength(3)],
+        ],
+
+        id: [this.category.id || null],
+      });
+    } else {
+      this.newCategoryForm = this.fb.group({
+        name: [
+          this.category?.name || null,
+          // [Validators.required, Validators.minLength(3)],
+        ],
+      });
+    }
   }
 
   onSubmit(): void {

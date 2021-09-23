@@ -10,3 +10,10 @@
 .modal-title {
   color: #000;
 }
+.close {
+  border: none;
+  background: transparent;
+  span {
+    color: #1f1f1f;
+  }
+}
