@@ -125,3 +125,12 @@
 .btns {
   display: none;
 }
+#template {
+  color: $main-color;
+}
+.modal-title {
+  color: #1f1f1f;
+  span {
+    color: $main-color;
+  }
+}

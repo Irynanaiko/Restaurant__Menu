@@ -41,4 +41,10 @@ export class DishesService {
       .patch(`${this.url}/${dishId}`, newDish)
       .subscribe(() => this.getDishesData());
   }
+
+  deleteDish(dishId: string): void {
+    this.http.delete(`${this.url}/${dishId}`).subscribe(() => {
+      this.getDishesData();
+    });
+  }
 }

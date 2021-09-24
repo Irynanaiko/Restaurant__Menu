@@ -1,5 +1,5 @@
 import { InfoService } from 'src/app/core/services/info.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { Dishes } from './../../core/interfaces/dishes.interface';
 import { CategoriesService } from './../../core/services/categories.service';
 import { DishesService } from 'src/app/core/services/dishes.service';
@@ -16,6 +16,7 @@ import { NewDishComponent } from './new-dish/new-dish.component';
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
+  // @Input() dish: Dishes;
   categoriesData: Array<Categories>;
   dishesData: Array<Dishes>;
   info: Array<Info>;
@@ -132,6 +133,17 @@ export class AdminComponent implements OnInit {
     console.log(dish);
   }
 
+  // delete(template, dish: Dishes): void {
+  //   const initialState = { ...dish };
+
+  //   this.openModalForDeleteDish(template, initialState);
+  // }
+
+  deleteDish(dishId: string): void {
+    this.dishesService.deleteDish(dishId);
+    this.modalRef.hide();
+  }
+
   private openModalForDish(initialState: Partial<any>): void {
     this.modalRef = this.modalService.show(
       NewDishComponent,
@@ -145,7 +157,15 @@ export class AdminComponent implements OnInit {
     );
   }
 
+  openModalForDeleteDish(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
   updateInfo(): void {
     console.log(this.info);
+  }
+
+  click(id) {
+    console.log(id);
   }
 }
