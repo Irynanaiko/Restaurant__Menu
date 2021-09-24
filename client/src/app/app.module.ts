@@ -21,6 +21,7 @@ import { NewDishComponent } from './components/admin/new-dish/new-dish.component
 import { HeaderAdminComponent } from './components/admin/header-admin/header-admin.component';
 import { FooterAdminComponent } from './components/admin/footer-admin/footer-admin.component';
 import { NewInfoComponent } from './components/admin/new-info/new-info.component';
+import { ScrollTopComponent } from './components/scroll-top/scroll-top.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { NewInfoComponent } from './components/admin/new-info/new-info.component
     HeaderAdminComponent,
     FooterAdminComponent,
     NewInfoComponent,
+    ScrollTopComponent,
   ],
   imports: [
     BrowserModule,
