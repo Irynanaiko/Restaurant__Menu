@@ -14,7 +14,7 @@ class ItemsController {
         }
     }
 
-    async addNewItem(req, res, next) {
+    async addNewItem(req, res) {
        try {
             if (!req.body.name) {
                 res.status(400).send({
