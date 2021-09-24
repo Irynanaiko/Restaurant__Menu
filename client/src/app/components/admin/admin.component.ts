@@ -16,7 +16,6 @@ import { NewDishComponent } from './new-dish/new-dish.component';
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
-  // @Input() dish: Dishes;
   categoriesData: Array<Categories>;
   dishesData: Array<Dishes>;
   info: Array<Info>;
@@ -133,12 +132,6 @@ export class AdminComponent implements OnInit {
     console.log(dish);
   }
 
-  // delete(template, dish: Dishes): void {
-  //   const initialState = { ...dish };
-
-  //   this.openModalForDeleteDish(template, initialState);
-  // }
-
   deleteDish(dishId: string): void {
     this.dishesService.deleteDish(dishId);
     this.modalRef.hide();
@@ -163,9 +156,5 @@ export class AdminComponent implements OnInit {
 
   updateInfo(): void {
     console.log(this.info);
-  }
-
-  click(id) {
-    console.log(id);
   }
 }

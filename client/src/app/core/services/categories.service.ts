@@ -1,7 +1,6 @@
 import { Categories } from './../interfaces/categories.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
 
@@ -16,17 +15,6 @@ export class CategoriesService {
   constructor(private http: HttpClient) {
     this.getCategoriesData();
   }
-
-  // getInfoData(): void {
-  //   this.http.get<Array<Info>>(this.url).subscribe((data) => {
-  //     this.infoData.next(data);
-  //     console.log(data);
-  //   });
-  // }
-
-  // getCategoriesData(): Observable<Array<Categories>> {
-  //   return this.http.get<Array<Categories>>(this.url);
-  // }
 
   private getCategoriesData(): void {
     this.http.get<Array<Categories>>(this.url).subscribe((data) => {

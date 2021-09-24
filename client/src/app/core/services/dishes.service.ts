@@ -23,17 +23,12 @@ export class DishesService {
     });
   }
 
-  // getDishesData(): Observable<Array<Dishes>> {
-  //   return this.http.get<Array<Dishes>>(this.url);
-  // }
-
   getDishesByCategory(categoryId: string): Observable<Dishes> {
     return this.http.get<Dishes>(`${this.url}/${categoryId}`);
   }
 
   addNewDish(newDish: Dishes): void {
     this.http.post(this.url, newDish).subscribe(() => this.getDishesData());
-    console.log(newDish);
   }
 
   updateDish(dishId: string, newDish: Dishes): void {

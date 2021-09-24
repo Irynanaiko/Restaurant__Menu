@@ -11,7 +11,6 @@ import { InfoService } from './core/services/info.service';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainComponent } from './components/main/main.component';
 import { DishesService } from './core/services/dishes.service';
-import { CategoriesItemsComponent } from './components/main/categories-items/categories-items.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { NewCategoryComponent } from './components/admin/new-category/new-category.component';
@@ -26,7 +25,6 @@ import { NewDishComponent } from './components/admin/new-dish/new-dish.component
     HeaderComponent,
     FooterComponent,
     MainComponent,
-    CategoriesItemsComponent,
     AdminComponent,
     PageNotFoundComponent,
     NewCategoryComponent,

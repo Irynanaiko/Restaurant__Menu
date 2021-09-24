@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Observable } from 'rxjs';
 import { Info } from '../interfaces/';
 import { environment } from 'src/environments/environment';
 
@@ -23,10 +22,6 @@ export class InfoService {
       console.log(data);
     });
   }
-
-  // getInfoData(): Observable<Array<Info>> {
-  //   return this.http.get<Array<Info>>(this.url);
-  // }
 
   updateRestaurantInfo(infoId: string, newInfo: Info): void {
     this.http

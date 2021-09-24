@@ -23,12 +23,6 @@ export class MainComponent implements OnInit {
     this.getDishesData();
   }
 
-  // getCategoriesData(): void {
-  //   this.categoriesService.getCategoriesData().subscribe((data) => {
-  //     this.categoriesData = data;
-  //   });
-  // }
-
   private getCategoriesData(): void {
     this.categoriesService.categoriesData.subscribe((data) => {
       this.categoriesData = data;
@@ -40,14 +34,6 @@ export class MainComponent implements OnInit {
       this.dishesData = data;
     });
   }
-
-  // public getDishesByCategory = (categoryId: string): void => {
-  //   this.dishesService
-  //     .getDishesByCategory(categoryId)
-  //     .subscribe((data: any) => {
-  //       this.dishesData = data;
-  //     });
-  // };
 
   getDishesByCategory(categoryId): void {
     this.dishesService

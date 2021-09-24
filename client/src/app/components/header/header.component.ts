@@ -8,7 +8,6 @@ import { InfoService } from 'src/app/core/services/info.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  // info: Array<Info>;
   info: Array<Info>;
 
   constructor(private infoService: InfoService) {}
@@ -20,7 +19,6 @@ export class HeaderComponent implements OnInit {
   getInfoData(): void {
     this.infoService.infoData.subscribe((data) => {
       this.info = data;
-      console.log(this.info);
     });
   }
 }
