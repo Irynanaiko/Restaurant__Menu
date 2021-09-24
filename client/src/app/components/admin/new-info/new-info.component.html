@@ -1,0 +1,76 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{modalHeader}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalHide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+ 
+  <form [formGroup]="newInfoForm" class="app-new-info" (ngSubmit)="onSubmit()">
+    <div class="modal-body">
+ 
+        <div class="form-group">
+ 
+            <input class="form-control" 
+                placeholder="Назва ресторану" 
+                type="text" 
+                name="name" 
+                formControlName="name" 
+                [ngClass]="{
+                  'is-invalid': nameControl.invalid && isSubmit,
+                  'is-valid': nameControl.valid && isSubmit
+                }"
+            >
+
+              <div class="invalid-feedback" *ngIf="nameControl.errors && isSubmit">
+                <span *ngIf="nameControl.errors.required">Це поле є обов'язковим.</span>
+                <span *ngIf="nameControl.errors.minlength">Текст має мати більше ніж
+                  {{nameControl.errors['minlength']['requiredLength']}} символи.</span>
+              </div>
+
+                <input class="form-control" 
+                    placeholder="E-mail" 
+                    type="text" 
+                    name="email" 
+                    formControlName="email" 
+                >
+
+                <input class="form-control" 
+                    placeholder="website" 
+                    type="text" 
+                    name="website" 
+                    formControlName="website" 
+                >
+
+                <input class="form-control" 
+                    placeholder="logo" 
+                    type="text" 
+                    name="logo" 
+                    formControlName="logo" 
+                >
+
+                <input class="form-control" 
+                    placeholder="address" 
+                    type="text" 
+                    name="address" 
+                    formControlName="address" 
+                >
+
+                <input class="form-control" 
+                    placeholder="wifi" 
+                    type="text" 
+                    name="wifi" 
+                    formControlName="wifi" 
+                >
+        </div>
+    </div>
+ 
+    <footer class=" modal-footer d-flex">
+      <button class="btn btn-secondary" (click)="modalHide()" type="button">
+        Cancel
+      </button>
+      <button class="btn btn-primary" (click)="onSubmit()" type="submit">
+        Save
+      </button>
+    </footer>
+ 
+  </form>

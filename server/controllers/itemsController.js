@@ -14,7 +14,7 @@ class ItemsController {
         }
     }
 
-    async addNewItem(req, res) {
+    async addNewItem(req, res, next) {
        try {
             if (!req.body.name) {
                 res.status(400).send({
@@ -30,10 +30,11 @@ class ItemsController {
             return res.send({message: ADDING}) 
 
         } catch(e) {
-            res.status(500).send({
-                message:
-                e.message || "Some error occurred while creating the Item."
-            });
+            next(ApiError.badRequest(e.message)); 
+            // res.status(500).send({
+            //     message:
+            //     e.message || "Some error occurred while creating the Item."
+            // });
         }
     }
 
@@ -54,7 +55,7 @@ class ItemsController {
         }
     }
 
-    async updateItem (req, res) {
+    async updateItem (req, res, next) {
         try {
             const id = req.params.id;
             Items.update(req.body, {
@@ -73,9 +74,10 @@ class ItemsController {
             })
 
         } catch(e) {
-            res.status(500).send({
-                message: "Could not updata Item with id=" + id
-            });
+            next(ApiError.badRequest(e.message)); 
+            // res.status(500).send({
+            //     message: "Could not updata Item with id=" + id
+            // });
         }
     }
 

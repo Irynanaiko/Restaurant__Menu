@@ -18,6 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { UpdateInfoComponent } from './components/admin/update-info/update-info.component';
 import { NewDishComponent } from './components/admin/new-dish/new-dish.component';
+import { HeaderAdminComponent } from './components/admin/header-admin/header-admin.component';
+import { FooterAdminComponent } from './components/admin/footer-admin/footer-admin.component';
+import { NewInfoComponent } from './components/admin/new-info/new-info.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { NewDishComponent } from './components/admin/new-dish/new-dish.component
     NewCategoryComponent,
     UpdateInfoComponent,
     NewDishComponent,
+    HeaderAdminComponent,
+    FooterAdminComponent,
+    NewInfoComponent,
   ],
   imports: [
     BrowserModule,

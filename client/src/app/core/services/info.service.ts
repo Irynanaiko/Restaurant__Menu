@@ -19,7 +19,6 @@ export class InfoService {
   private getInfoData(): void {
     this.http.get<Array<Info>>(this.url).subscribe((data) => {
       this.infoData.next(data);
-      console.log(data);
     });
   }
 

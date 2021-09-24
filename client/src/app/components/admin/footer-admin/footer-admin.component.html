@@ -1,0 +1,46 @@
+<footer class="footer">
+    <div class="footer__info">
+        <div class="footer__social"> Соціальні мережі
+            <ul class="footer__list">
+                <li class="footer__social_item">
+                    <a href="#">
+                        <img src="../../../../assets/img/facebook.png"  alt="facebook">
+                    </a>
+                </li>
+                <li class="footer__social_item">
+                    <a href="#">
+                        <img src="../../../../assets/img/insta.png" alt="instagram">
+                    </a>
+                </li>
+                <li class="footer__social_item">
+                    <a href="#">
+                        <img src="../../../../assets/img/twitter.png"  alt="twitter">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="footer__logo">
+            <img src="../../../../assets/img/logo.png">
+            <div class="footer__github">
+                <a href="https://github.com/Irynanaiko">Iryna Naiko&copy;2012</a>
+            </div>
+        </div>
+
+        <div *ngFor="let i of info" class="footer__address">
+            <div class="footer__address_item">
+                <img src="../../../../assets/img/address.png" alt="address">
+                <span  class="footer__address_data">{{i.address}}</span>
+            </div>  
+            <div class="footer__address_item">
+                <img src="../../../../assets/img/web.png" alt="website">
+                <span class="footer__address_data">{{i.website}}</span>
+            </div> 
+            <div class="footer__address_item"> 
+                <img src="../../../../assets/img/email.png" alt="email">
+                <span class="footer__address_data">{{i.email}}</span>
+            </div> 
+
+        </div>
+    </div> 
+</footer>

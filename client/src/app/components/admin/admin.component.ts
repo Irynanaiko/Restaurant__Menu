@@ -90,19 +90,16 @@ export class AdminComponent implements OnInit {
       modalHeader: 'Редагувати категорію',
       save: this.updateCategory.bind(this),
     };
-    console.log(this);
     this.openModal(initialState);
   }
 
   private updateCategory(category: Categories): void {
     this.categoriesService.updateCategory(category.id, category);
-    console.log(category);
   }
 
   private getInfoData(): void {
     this.infoService.infoData.subscribe((data) => {
       this.info = data;
-      console.log(this.info);
     });
   }
 
@@ -129,7 +126,6 @@ export class AdminComponent implements OnInit {
 
   private updateDish(dish: Dishes): void {
     this.dishesService.updateDish(dish.id, dish);
-    console.log(dish);
   }
 
   deleteDish(dishId: string): void {
@@ -152,9 +148,5 @@ export class AdminComponent implements OnInit {
 
   openModalForDeleteDish(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-  }
-
-  updateInfo(): void {
-    console.log(this.info);
   }
 }
