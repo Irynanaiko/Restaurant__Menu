@@ -17,3 +17,18 @@
     color: #1f1f1f;
   }
 }
+
+.form-input {
+  display: block;
+  margin-bottom: 20px;
+  label {
+    color: #1f1f1f;
+    font-size: 14px;
+  }
+}
+
+.invalid-feedback {
+  span {
+    color: red;
+  }
+}

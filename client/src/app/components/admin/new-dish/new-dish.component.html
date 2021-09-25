@@ -7,52 +7,80 @@
  
   <form [formGroup]="newDishForm" class="app-dish-category" (ngSubmit)="onSubmit()">
     <div class="modal-body">
- 
- 
         <div class="form-group">
- 
-            <input class="form-control" 
-                placeholder="Назва страви" 
-                type="text" 
-                name="title" 
-                formControlName="name" 
-            >
 
-            <input class="form-control" 
-                placeholder="url" 
+            <span class="form-input">
+              <label for="name">Назва страви:</label>
+ 
+              <input class="form-control" 
+                type="text" 
+                name="name" 
+                formControlName="name" 
+                id="name"
+                [ngClass]="{
+                  'is-invalid': nameControl.invalid && isSubmit,
+                  'is-valid': nameControl.valid && isSubmit
+                }"
+              >
+              <div class="invalid-feedback" *ngIf="nameControl.errors && isSubmit">
+                <span *ngIf="nameControl.errors.required">Це поле є обов'язковим.</span>
+                <span *ngIf="nameControl.errors.minlength">Текст має мати більше ніж
+                  {{nameControl.errors['minlength']['requiredLength']}} символи.</span>
+              </div>
+            </span>
+
+            <span class="form-input">
+              <label for="img">Завантажити зображення:</label>
+              <input class="form-control" 
+                id="img" 
                 type="text" 
                 name="title" 
                 formControlName="img" 
-            >
+              >
+            </span>
 
-            <input class="form-control" 
-                placeholder="Ціна страви" 
+            <span class="form-input">
+              <label for="price">Вартість страви:</label>
+              <input class="form-control" 
+                id="price" 
                 type="text" 
                 name="price" 
                 formControlName="price" 
-            >
+              >
+            </span>
 
-            <input class="form-control" 
-              placeholder="Вага страви" 
-              type="text" 
-              name="weight" 
-              formControlName="weight" 
-            >
-            <textarea
-              class="form-control" 
-              placeholder="Опис страви" 
-              type="text" 
-              name="descr" 
-              formControlName="descr"
-            >
-            </textarea>
+            <span class="form-input">
+              <label for="weight">Вага страви:</label>
+              <input class="form-control" 
+                id="weight"
+                type="text" 
+                name="weight" 
+                formControlName="weight" 
+              >
+            </span>
 
-            <input class="form-control" 
-              placeholder="Id категорії" 
-              type="text" 
-              name="categoryId" 
-              formControlName="categoryId" 
-            >
+            <span class="form-input">
+              <label for="descr">Опис страви:</label>
+              <textarea
+                class="form-control" 
+                id="descr"
+                type="text" 
+                name="descr" 
+                formControlName="descr"
+              >
+              </textarea>
+            </span>
+
+            <span class="form-input">
+              <label for="categoryId">Категорія:</label>
+              <input class="form-control" 
+                id="categoryId" 
+                type="text" 
+                name="categoryId" 
+                formControlName="categoryId" 
+              >
+            </span>
+            
         </div>
     </div>
  

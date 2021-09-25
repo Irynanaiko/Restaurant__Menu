@@ -24,12 +24,16 @@ export class NewDishComponent implements OnInit {
     this.createNewDishForm();
   }
 
+  get nameControl(): any {
+    return this.newDishForm.get('name') as FormControl;
+  }
+
   private createNewDishForm(): void {
     if (this.dish?.id) {
       this.newDishForm = this.fb.group({
         name: [
           this.dish?.name || null,
-          // [Validators.required, Validators.minLength(3)],
+          [Validators.required, Validators.minLength(3)],
         ],
 
         id: [this.dish.id || null],
@@ -43,7 +47,7 @@ export class NewDishComponent implements OnInit {
       this.newDishForm = this.fb.group({
         name: [
           this.dish?.name || null,
-          // [Validators.required, Validators.minLength(3)],
+          [Validators.required, Validators.minLength(3)],
         ],
         img: [this.dish?.img || null],
         price: [this.dish?.price || null],
@@ -55,13 +59,13 @@ export class NewDishComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // this.isSubmit = true;
+    this.isSubmit = true;
 
-    // if (this.newCategoryForm.invalid) {
-    //   return;
-    // }
+    if (this.newDishForm.invalid) {
+      return;
+    }
 
-    // this.isSubmit = false;
+    this.isSubmit = false;
 
     this.save(this.newDishForm.value);
     this.modalHide();
