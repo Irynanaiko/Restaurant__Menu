@@ -52,4 +52,8 @@ export class HeaderAdminComponent implements OnInit {
       )
     );
   }
+
+  printPage() {
+    window.print();
+  }
 }
