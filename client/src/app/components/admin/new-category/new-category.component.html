@@ -16,12 +16,12 @@
                 name="name" 
                 formControlName="name" 
                 [ngClass]="{
-                  'is-invalid': nameControl.invalid && isSubmit,
-                  'is-valid': nameControl.valid && isSubmit
+                  'is-invalid': nameControl.invalid && (nameControl.dirty || nameControl.touched),
+                  'is-valid': nameControl.valid && (nameControl.dirty || nameControl.touched)
                 }"
               >
 
-              <div class="invalid-feedback" *ngIf="nameControl.errors && isSubmit">
+              <div class="invalid-feedback" *ngIf="nameControl.errors && (nameControl.dirty || nameControl.touched)">
                 <span *ngIf="nameControl.errors.required">Це поле є обов'язковим.</span>
                 <span *ngIf="nameControl.errors.minlength">Текст має мати більше ніж
                   {{nameControl.errors['minlength']['requiredLength']}} символи.</span>

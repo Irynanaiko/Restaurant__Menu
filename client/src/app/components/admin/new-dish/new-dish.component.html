@@ -18,11 +18,11 @@
                 formControlName="name" 
                 id="name"
                 [ngClass]="{
-                  'is-invalid': nameControl.invalid && isSubmit,
-                  'is-valid': nameControl.valid && isSubmit
+                  'is-invalid': nameControl.invalid && (nameControl.dirty || nameControl.touched),
+                  'is-valid': nameControl.valid && (nameControl.dirty || nameControl.touched)
                 }"
               >
-              <div class="invalid-feedback" *ngIf="nameControl.errors && isSubmit">
+              <div class="invalid-feedback" *ngIf="nameControl.errors && (nameControl.dirty || nameControl.touched)">
                 <span *ngIf="nameControl.errors.required">Це поле є обов'язковим.</span>
                 <span *ngIf="nameControl.errors.minlength">Текст має мати більше ніж
                   {{nameControl.errors['minlength']['requiredLength']}} символи.</span>
@@ -36,7 +36,14 @@
                 type="text" 
                 name="title" 
                 formControlName="img" 
+                [ngClass]="{
+                  'is-invalid': imgControl.invalid && (imgControl.dirty || imgControl.touched),
+                  'is-valid': imgControl.valid && (imgControl.dirty || imgControl.touched)
+                }"
               >
+              <div class="invalid-feedback" *ngIf="imgControl.errors && (imgControl.dirty || imgControl.touched)">
+                <span *ngIf="imgControl.errors.required">Це поле є обов'язковим.</span>
+              </div>
             </span>
 
             <span class="form-input">
@@ -46,7 +53,14 @@
                 type="text" 
                 name="price" 
                 formControlName="price" 
+                [ngClass]="{
+                  'is-invalid': priceControl.invalid && (priceControl.dirty || priceControl.touched),
+                  'is-valid': priceControl.valid && (priceControl.dirty || priceControl.touched)
+                }"
               >
+              <div class="invalid-feedback" *ngIf="priceControl.errors && (priceControl.dirty || priceControl.touched)">
+                <span *ngIf="priceControl.errors.required">Це поле є обов'язковим.</span>
+              </div>
             </span>
 
             <span class="form-input">
@@ -56,7 +70,14 @@
                 type="text" 
                 name="weight" 
                 formControlName="weight" 
+                [ngClass]="{
+                  'is-invalid': weightControl.invalid && (weightControl.dirty || weightControl.touched),
+                  'is-valid': weightControl.valid && (weightControl.dirty || weightControl.touched)
+                }"
               >
+              <div class="invalid-feedback" *ngIf="weightControl.errors && (weightControl.dirty || weightControl.touched)">
+                <span *ngIf="weightControl.errors.required">Це поле є обов'язковим.</span>
+              </div>
             </span>
 
             <span class="form-input">
@@ -78,7 +99,14 @@
                 type="text" 
                 name="categoryId" 
                 formControlName="categoryId" 
+                [ngClass]="{
+                  'is-invalid': categoryIdControl.invalid && (categoryIdControl.dirty || categoryIdControl.touched),
+                  'is-valid': categoryIdControl.valid && (categoryIdControl.dirty || categoryIdControl.touched)
+                }"
               >
+              <div class="invalid-feedback" *ngIf="categoryIdControl.errors && (categoryIdControl.dirty || categoryIdControl.touched)">
+                <span *ngIf="categoryIdControl.errors.required">Це поле є обов'язковим.</span>
+              </div>
             </span>
             
         </div>
