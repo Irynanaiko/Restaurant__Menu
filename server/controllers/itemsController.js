@@ -3,7 +3,7 @@ const {Items} = require('../models/models');
 const {statusCode, ADDING, UPDATE} = require('../const/const');
 
 class ItemsController {
-    async getAllItems(req, res) {
+    async getAllItems(req, res, next) {
         try {
             const items = await Items.findAll();
             return res
@@ -30,11 +30,11 @@ class ItemsController {
             return res.send({message: ADDING}) 
 
         } catch(e) {
-            next(ApiError.badRequest(e.message)); 
-            // res.status(500).send({
-            //     message:
-            //     e.message || "Some error occurred while creating the Item."
-            // });
+            // next(ApiError.badRequest(e.message)); 
+            res.status(500).send({
+                message:
+                e.message || "Some error occurred while creating the Item."
+            });
         }
     }
 
