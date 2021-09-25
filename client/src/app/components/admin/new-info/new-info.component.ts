@@ -27,6 +27,9 @@ export class NewInfoComponent implements OnInit {
   get nameControl(): any {
     return this.newInfoForm.get('name') as FormControl;
   }
+  get emailControl(): any {
+    return this.newInfoForm.get('email') as FormControl;
+  }
 
   private createNewInfoForm(): void {
     this.newInfoForm = this.fb.group({
@@ -36,7 +39,10 @@ export class NewInfoComponent implements OnInit {
       ],
       email: [
         this.info?.email || null,
-        // [Validators.required, Validators.minLength(3)],
+        [
+          Validators.required,
+          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+        ],
       ],
       website: [this.info?.website || null],
       logo: [this.info?.logo || null],

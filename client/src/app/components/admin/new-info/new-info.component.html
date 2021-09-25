@@ -9,58 +9,85 @@
     <div class="modal-body">
  
         <div class="form-group">
- 
+
+          <span class="form-input">
+            <label for="name">Назва ресторану:</label>
             <input class="form-control" 
-                placeholder="Назва ресторану" 
+                id="name" 
                 type="text" 
                 name="name" 
                 formControlName="name" 
                 [ngClass]="{
-                  'is-invalid': nameControl.invalid && isSubmit,
-                  'is-valid': nameControl.valid && isSubmit
+                  'is-invalid': nameControl.invalid && (nameControl.dirty || nameControl.touched),
+                  'is-valid': nameControl.valid && (nameControl.dirty || nameControl.touched)
                 }"
             >
 
-              <div class="invalid-feedback" *ngIf="nameControl.errors && isSubmit">
+              <div class="invalid-feedback" *ngIf="nameControl.errors && (nameControl.dirty || nameControl.touched)">
                 <span *ngIf="nameControl.errors.required">Це поле є обов'язковим.</span>
                 <span *ngIf="nameControl.errors.minlength">Текст має мати більше ніж
                   {{nameControl.errors['minlength']['requiredLength']}} символи.</span>
               </div>
+          </span>
 
-                <input class="form-control" 
-                    placeholder="E-mail" 
-                    type="text" 
+          <span class="form-input">
+            <label for="email">E-mail</label>
+            <input class="form-control" 
+                    id="email" 
+                    type="email" 
                     name="email" 
-                    formControlName="email" 
-                >
+                    formControlName="email"
+                    [ngClass]="{
+                      'is-invalid': emailControl.invalid && (emailControl.dirty || emailControl.touched),
+                      'is-valid': emailControl.valid && (emailControl.dirty || emailControl.touched)
+                    }"
+            >
+            <div class="invalid-feedback" *ngIf="emailControl.errors && (emailControl.dirty || emailControl.touched)">
+              <span *ngIf="emailControl.errors.required">Це поле є обов'язковим.</span>
+              <span *ngIf="emailControl.errors.pattern">Це поле має відповідати типу email.</span> 
+            </div>
+          </span>
 
-                <input class="form-control" 
-                    placeholder="website" 
-                    type="text" 
-                    name="website" 
-                    formControlName="website" 
-                >
+          <span class="form-input">
+            <label for="website">Web site</label>
+            <input class="form-control" 
+            id="website" 
+            type="text" 
+            name="website" 
+            formControlName="website" 
+          >
+          </span>
 
-                <input class="form-control" 
-                    placeholder="logo" 
+          <span class="form-input">
+            <label for="logo">Logo</label>
+            <input class="form-control" 
+                    id="logo" 
                     type="text" 
                     name="logo" 
                     formControlName="logo" 
                 >
+          </span>
 
-                <input class="form-control" 
-                    placeholder="address" 
+          <span class="form-input">
+            <label for="address">Адреса:</label>
+            <input class="form-control" 
+                    id="address" 
                     type="text" 
                     name="address" 
                     formControlName="address" 
                 >
+          </span>
 
-                <input class="form-control" 
-                    placeholder="wifi" 
+          <span class="form-input">
+            <label for="wifi">Wi-Fi:</label>
+            <input class="form-control" 
+                    id="wifi" 
                     type="text" 
                     name="wifi" 
                     formControlName="wifi" 
                 >
+          </span>
+
         </div>
     </div>
  
