@@ -9,8 +9,9 @@
 
             <li class="categories__list_item"
             *ngFor="let category of categoriesData"
-            (click)="getDishesByCategory(category.id)"
-            [class.active]="category.id === categoriesData.id"
+            (click)="getDishesByCategory(category.id, category)"
+            [ngClass]="{'active': isActive(category)}"
+
             >
                 {{category.name}}
             </li>

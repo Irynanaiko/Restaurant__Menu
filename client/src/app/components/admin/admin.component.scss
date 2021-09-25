@@ -147,3 +147,7 @@
 .form-control {
   margin: 40px auto 0 auto;
 }
+.active {
+  color: $main-color;
+  border-color: $main-color;
+}

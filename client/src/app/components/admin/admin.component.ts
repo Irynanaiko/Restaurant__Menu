@@ -21,6 +21,7 @@ export class AdminComponent implements OnInit {
   info: Array<Info>;
   modalRef: BsModalRef;
   search: string;
+  selected: any;
 
   constructor(
     private categoriesService: CategoriesService,
@@ -52,12 +53,17 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  getDishesByCategory(categoryId): void {
+  getDishesByCategory(categoryId, category): void {
+    this.selected = category;
     this.dishesService
       .getDishesByCategory(categoryId)
       .subscribe((data: any) => {
         this.dishesData = data;
       });
+  }
+
+  isActive(category) {
+    return this.selected === category;
   }
 
   createNewCategory(): void {

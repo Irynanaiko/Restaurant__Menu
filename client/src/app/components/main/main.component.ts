@@ -12,6 +12,7 @@ import { Categories } from 'src/app/core/interfaces';
 export class MainComponent implements OnInit {
   categoriesData: Array<Categories>;
   dishesData: Array<Dishes>;
+  selected: any;
 
   constructor(
     private categoriesService: CategoriesService,
@@ -35,11 +36,16 @@ export class MainComponent implements OnInit {
     });
   }
 
-  getDishesByCategory(categoryId): void {
+  getDishesByCategory(categoryId, category): void {
+    this.selected = category;
     this.dishesService
       .getDishesByCategory(categoryId)
       .subscribe((data: any) => {
         this.dishesData = data;
       });
+  }
+
+  isActive(category) {
+    return this.selected === category;
   }
 }
