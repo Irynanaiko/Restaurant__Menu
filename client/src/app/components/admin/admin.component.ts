@@ -20,6 +20,7 @@ export class AdminComponent implements OnInit {
   dishesData: Array<Dishes>;
   info: Array<Info>;
   modalRef: BsModalRef;
+  search: string;
 
   constructor(
     private categoriesService: CategoriesService,

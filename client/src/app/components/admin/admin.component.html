@@ -31,10 +31,22 @@
         </ul>
    </div> 
 
+   <div class="container">
+    <form>
+        <div class="form-group">
+          <input class="form-control"
+                 name="search"
+                 type="text"
+                 placeholder="Пошук страви..."
+                 [(ngModel)]="search" />
+        </div>
+    </form>
+   </div>
+
 
     <div class="dishes container">
         <ul class="row dishes__list">
-            <li class="dish col" *ngFor="let dish of dishesData" [dish]="dish" >
+            <li class="dish col" *ngFor="let dish of dishesData | filterDishes:search" [dish]="dish" >
                <div class="btns">
                     <button class="btn edit"
                     (click)="editDish(dish)"

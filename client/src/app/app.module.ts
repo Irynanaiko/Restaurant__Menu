@@ -22,6 +22,7 @@ import { HeaderAdminComponent } from './components/admin/header-admin/header-adm
 import { FooterAdminComponent } from './components/admin/footer-admin/footer-admin.component';
 import { NewInfoComponent } from './components/admin/new-info/new-info.component';
 import { ScrollTopComponent } from './components/scroll-top/scroll-top.component';
+import { FilterDishesPipe } from './shared/pipes/filter-dishes/filter-dishes.pipe';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ScrollTopComponent } from './components/scroll-top/scroll-top.component
     FooterAdminComponent,
     NewInfoComponent,
     ScrollTopComponent,
+    FilterDishesPipe,
   ],
   imports: [
     BrowserModule,

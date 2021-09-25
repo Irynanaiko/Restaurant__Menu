@@ -134,3 +134,16 @@
     color: $main-color;
   }
 }
+
+.form-control {
+  width: 30%;
+  @include mQ(1200px) {
+    width: 80%;
+  }
+  @include mQ(810px) {
+    width: 100%;
+  }
+}
+.form-control {
+  margin: 40px auto 0 auto;
+}
