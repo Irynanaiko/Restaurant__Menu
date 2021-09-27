@@ -23,9 +23,14 @@ export class CategoriesService {
   }
 
   addNewCategory(newCategory: Categories): void {
-    this.http
-      .post(this.url, newCategory)
-      .subscribe(() => this.getCategoriesData());
+    this.http.post(this.url, newCategory).subscribe((data) => {
+      console.log(data);
+
+      console.log = function () {
+        alert(JSON.stringify(arguments));
+      };
+      this.getCategoriesData();
+    });
   }
 
   updateCategory(categoryId: string, newCategory: Categories): void {

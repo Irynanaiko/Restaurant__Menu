@@ -34,8 +34,9 @@
               <input class="form-control" 
                 id="img" 
                 type="text" 
-                name="title" 
+                name="img" 
                 formControlName="img" 
+               
                 [ngClass]="{
                   'is-invalid': imgControl.invalid && (imgControl.dirty || imgControl.touched),
                   'is-valid': imgControl.valid && (imgControl.dirty || imgControl.touched)
@@ -116,7 +117,7 @@
       <button class="btn btn-secondary" (click)="modalHide()" type="button">
         Cancel
       </button>
-      <button class="btn btn-primary" (click)="onSubmit()" type="submit">
+      <button class="btn btn-primary"  type="submit">
         Save
       </button>
     </footer>

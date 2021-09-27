@@ -18,6 +18,7 @@ export class NewDishComponent implements OnInit {
   isSubmit = false;
   modalHeader: string;
   dish: Dishes;
+  // Image: File;
   constructor(private fb: FormBuilder, private bsmodalRef: BsModalRef) {}
 
   ngOnInit(): void {
@@ -40,6 +41,11 @@ export class NewDishComponent implements OnInit {
     return this.newDishForm.get('categoryId') as FormControl;
   }
 
+  // uploadFile(event) {
+  //   this.Image = event.target.files[0];
+  //   console.log(this.Image);
+  // }
+
   private createNewDishForm(): void {
     if (this.dish?.id) {
       this.newDishForm = this.fb.group({
@@ -48,12 +54,12 @@ export class NewDishComponent implements OnInit {
           [Validators.required, Validators.minLength(3)],
         ],
 
-        id: [this.dish.id || null],
+        id: [this.dish?.id || null],
         img: [this.dish?.img || null, [Validators.required]],
 
         price: [this.dish?.price || null, [Validators.required]],
         weight: [this.dish?.weight || null, [Validators.required]],
-        descr: [this.dish?.descr || null, [Validators.required]],
+        descr: [this.dish?.descr || null],
         categoryId: [this.dish?.categoryId || null, [Validators.required]],
       });
     } else {
@@ -66,7 +72,7 @@ export class NewDishComponent implements OnInit {
 
         price: [this.dish?.price || null, [Validators.required]],
         weight: [this.dish?.weight || null, [Validators.required]],
-        descr: [this.dish?.descr || null, [Validators.required]],
+        descr: [this.dish?.descr || null],
         categoryId: [this.dish?.categoryId || null, [Validators.required]],
       });
     }

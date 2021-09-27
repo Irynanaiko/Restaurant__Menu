@@ -1,20 +1,24 @@
 const ApiError = require('../error/ApiError');
 const {Items} = require('../models/models');
 const {statusCode, ADDING, UPDATE} = require('../const/const');
+const {cloudinary} = require('../utils/cloudinary');
 
 class ItemsController {
-    async getAllItems(req, res, next) {
+    async getAllItems(req, res) {
         try {
             const items = await Items.findAll();
             return res
                 .json(items)
                 .send({statusCode: statusCode.OK})
         }catch(e) {
-            next(ApiError.badRequest(e.message)); 
+            const error = ApiError.badRequest(e.message)
+            return res
+                .json({"message": error.message}) 
+                .status(error.status) 
         }
     }
 
-    async addNewItem(req, res, next) {
+    async addNewItem(req, res) {
        try {
             if (!req.body.name) {
                 res.status(400).send({
@@ -23,18 +27,21 @@ class ItemsController {
                 return;
             }
 
+            //  const fileStr = req.body.img;
+            // constuploadResponse = await cloudinary.uploader(fileStr);
+            // console.log(uploadResponse);
+
             let {name, descr, weight, price, img, categoryId} = req.body;
         
-            await Items.create({name, descr, weight, price, img, categoryId});
-        
+           await Items.create({name, descr, weight, price, img, categoryId});
+            
             return res.send({message: ADDING}) 
 
         } catch(e) {
-            // next(ApiError.badRequest(e.message)); 
-            res.status(500).send({
-                message:
-                e.message || "Some error occurred while creating the Item."
-            });
+            const error = ApiError.badRequest(e.message)
+            return res
+                .json({"message": error.message}) 
+                .status(error.status) 
         }
     }
 
@@ -55,7 +62,7 @@ class ItemsController {
         }
     }
 
-    async updateItem (req, res, next) {
+    async updateItem (req, res) {
         try {
             const id = req.params.id;
             Items.update(req.body, {
@@ -74,35 +81,37 @@ class ItemsController {
             })
 
         } catch(e) {
-            next(ApiError.badRequest(e.message)); 
-            // res.status(500).send({
-            //     message: "Could not updata Item with id=" + id
-            // });
+            const error = ApiError.badRequest(e.message)
+            return res
+                .json({"message": error.message}) 
+                .status(error.status)  
         }
     }
 
     async deleteItem(req, res) {
-        const id = req.params.id;
-        
-        Items.destroy({
-            where: { id: id }
-        })
-        .then(num => {
-            if (num == 1) {
-                res.send({
-                    message: "Item was deleted successfully!"
-                });
-            } else {
-                res.send({
-                    message: `Cannot delete Item with id=${id}.`
-                });
-            }
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: "Could not delete Item with id=" + id
-            });
-        });
+        try {
+            const id = req.params.id;   
+            Items.destroy({
+                where: { id: id }
+            })
+            .then(num => {
+                if (num == 1) {
+                    res.send({
+                     message: "Item was deleted successfully!"
+                    });
+                } else {
+                    res.send({
+                        message: `Cannot delete Item with id=${id}.`
+                    });
+                }
+            })
+
+        }catch(e) {
+            const error = ApiError.badRequest(e.message)
+            return res
+                .json({"message": error.message}) 
+                .status(error.status) 
+        }
     }  
     
     async getItemsByCategory(req, res) {
@@ -111,7 +120,10 @@ class ItemsController {
             let categoryItems = await Items.findAll({ where: { categoryId: id } });
             return res.json(categoryItems);
         }catch(e) {
-            next(ApiError.badRequest(e.message)); 
+            const error = ApiError.badRequest(e.message)
+            return res
+                .json({"message": error.message}) 
+                .status(error.status)
         }
     }
       

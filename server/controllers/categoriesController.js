@@ -2,6 +2,7 @@ const ApiError = require('../error/ApiError');
 const {Categories} = require('../models/models');
 const {statusCode, ADDING, UPDATE} = require('../const/const');
 
+
 class CategoriesController {
     async getAllCategories(req, res) {
         try {
@@ -12,46 +13,59 @@ class CategoriesController {
             .send({statusCode: statusCode.OK})
            
         }catch(e) {
-            next(ApiError.badRequest(e.message)); 
+            const error = ApiError.badRequest(e.message)
+            return res
+                .json({"message": error.message}) 
+                .status(error.status) 
         } 
     }
 
     async addNewCategory(req, res) {
         try {
             const {name} = req.body;
-            await Categories.create({name});
+           const category =  await Categories.create({name});
+            if(!category) {
+                throw new Error()
+            }
             return res
-                .send({message: ADDING})   
-        }catch(e) {
-            next(ApiError.badRequest(e.message)); 
-        }
+                .send({message: ADDING}) 
+                .status(statusCode.OK)  
+        } catch(e) {
+            const error = ApiError.badRequest(e.message)
+            return res
+                .json({"message": error.message}) 
+                .status(error.status) 
+        } 
     }
 
-    async deleteCategory(req, res) {
-        const id = req.params.id;
+    async deleteCategory(req, res) { 
+        try {
+            const id = req.params.id;
         
-        Categories.destroy({
-            where: { id: id }
-        })
-        .then(num => {
-            if (num == 1) {
-                res.send({
-                    message: "Category was deleted successfully!"
-                });
-            } else {
-                res.send({
-                    message: `Cannot delete Category with id=${id}.`
-                });
-            }
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: `Cannot delete Category with id=${id}.`
-            });
-        });
+            Categories.destroy({
+                where: { id: id }
+            })
+            .then(num => {
+                if (num == 1) {
+                    res.send({
+                        message: "Category was deleted successfully!"
+                    });
+                } else {
+                    res.send({
+                        message: `Cannot delete Category with id=${id}.`
+                    });
+                }
+            })
+
+        }catch(e) {
+            const error = ApiError.badRequest(e.message)
+            return res
+                .json({"message": error.message}) 
+                .status(error.status) 
+        }
     }   
 
-    async updateCategory(req, res, next) {
+    async updateCategory(req, res) {
         try {
             const id = req.params.id;
 
@@ -70,7 +84,10 @@ class CategoriesController {
                 }
             })
         }catch(e) {
-            next(ApiError.badRequest(e.message)); 
+            const error = ApiError.badRequest(e.message)
+            return res
+                .json({"message": error.message}) 
+                .status(error.status)  
         }
     } 
                                                  

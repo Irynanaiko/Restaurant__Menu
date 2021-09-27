@@ -50,14 +50,9 @@ export class NewCategoryComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.isSubmit = true;
-
     if (this.newCategoryForm.invalid) {
       return;
     }
-
-    this.isSubmit = false;
-
     this.save(this.newCategoryForm.value);
     this.modalHide();
   }

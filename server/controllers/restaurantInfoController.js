@@ -10,7 +10,7 @@ class RestaurantInfoController {
                 .json(restaurantInfo)
                 .status(statusCode.OK)
         }catch (e){
-            next(ApiError.badRequest(e.message));
+            return res.send(ApiError.badRequest(e.message))  
         }
     }
 
@@ -21,11 +21,11 @@ class RestaurantInfoController {
             await Restaurant_info.create({name, email, website, logo, address, wifi});
             return  res.send({message: ADDING}) 
         } catch (e) {
-            next(ApiError.badRequest(e.message));
+            return res.send(ApiError.badRequest(e.message))  
         }
     }
 
-    async updateRestaurantInfo(req, res, next) {
+    async updateRestaurantInfo(req, res) {
         try {
             const id = req.params.id;
 
@@ -44,7 +44,7 @@ class RestaurantInfoController {
                 }
             })
         }catch(e) {
-            next(ApiError.badRequest(e.message)); 
+            return res.send(ApiError.badRequest(e.message))  
         }
     }
 }
