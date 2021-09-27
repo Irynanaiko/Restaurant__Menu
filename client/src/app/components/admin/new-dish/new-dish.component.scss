@@ -32,3 +32,15 @@
     color: red;
   }
 }
+.preview {
+  position: relative;
+  width: 140px;
+  height: 100px;
+}
+.close__btn {
+  position: absolute;
+  border: none;
+  color: #000;
+  // border-radius: 100px;
+  background-color: transparent;
+}

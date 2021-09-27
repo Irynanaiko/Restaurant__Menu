@@ -18,11 +18,15 @@ export class NewDishComponent implements OnInit {
   isSubmit = false;
   modalHeader: string;
   dish: Dishes;
+  preview: string = '';
   // Image: File;
   constructor(private fb: FormBuilder, private bsmodalRef: BsModalRef) {}
 
   ngOnInit(): void {
     this.createNewDishForm();
+    if (this.dish) {
+      this.preview = this.newDishForm.controls.img.value;
+    }
   }
 
   get nameControl(): any {
@@ -41,10 +45,28 @@ export class NewDishComponent implements OnInit {
     return this.newDishForm.get('categoryId') as FormControl;
   }
 
-  // uploadFile(event) {
-  //   this.Image = event.target.files[0];
-  //   console.log(this.Image);
-  // }
+  uploadFile(event: Event) {
+    // this.preview = event.target.files[0];
+    // console.log(this.preview);
+    const target = event.target as HTMLInputElement;
+    if (target.files) {
+      const file: File = (target.files as FileList)[0];
+      this.previewFile(file);
+    }
+  }
+
+  previewFile(file: File) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      this.preview = reader.result as string;
+    };
+  }
+
+  clearImage() {
+    this.preview = '';
+    this.newDishForm.controls.img.setValue('');
+  }
 
   private createNewDishForm(): void {
     if (this.dish?.id) {
@@ -79,6 +101,9 @@ export class NewDishComponent implements OnInit {
   }
 
   onSubmit(): void {
+    const form = this.newDishForm;
+    form.value.img = this.preview;
+    console.log(form.value.img);
     this.isSubmit = true;
 
     if (this.newDishForm.invalid) {

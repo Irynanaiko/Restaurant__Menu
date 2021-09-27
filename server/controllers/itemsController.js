@@ -27,14 +27,22 @@ class ItemsController {
                 return;
             }
 
-            //  const fileStr = req.body.img;
-            // constuploadResponse = await cloudinary.uploader(fileStr);
+            // const { img } = req.body;
+            // if (!img.startsWith("http")) {
+            //   const response = await cloudinary.uploader.upload(img);
+            //   req.body.img = response.secure_url;
+            // }
+            // console.log(img);
+            // console.log(  GGGFFFFFFFFFF);
+            // const fileStr = req.body.img;
+            // const uploadResponse = await cloudinary.uploader(fileStr);
+            // req.body.fileStr = response.secure_url;
             // console.log(uploadResponse);
 
             let {name, descr, weight, price, img, categoryId} = req.body;
         
-           await Items.create({name, descr, weight, price, img, categoryId});
-            
+            await Items.create({name, descr, weight, price, img, categoryId});
+          
             return res.send({message: ADDING}) 
 
         } catch(e) {
@@ -126,6 +134,16 @@ class ItemsController {
                 .status(error.status)
         }
     }
+    
+    uploadImage = async (req, res, next) => {
+        const { img } = req.body;
+       
+        if (!img.startsWith("http")) {
+          const response = await cloudinary.uploader.upload(img);
+          req.body.img = response.secure_url;
+        }
+        next();
+    };
       
 }
 

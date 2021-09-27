@@ -6,7 +6,11 @@ const {statusCode, ADDING, UPDATE} = require('../const/const');
 class CategoriesController {
     async getAllCategories(req, res) {
         try {
-            const categories = await Categories.findAll();
+            const categories = await Categories.findAll({
+                order: [
+                    ['createdAt', 'ASC']
+                ]
+            });
             return res
             .json(categories)
             .status(statusCode.OK)
@@ -23,7 +27,7 @@ class CategoriesController {
     async addNewCategory(req, res) {
         try {
             const {name} = req.body;
-           const category =  await Categories.create({name});
+            const category =  await Categories.create({name});
             if(!category) {
                 throw new Error()
             }

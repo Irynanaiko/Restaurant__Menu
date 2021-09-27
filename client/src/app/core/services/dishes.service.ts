@@ -28,7 +28,11 @@ export class DishesService {
   }
 
   addNewDish(newDish: Dishes): void {
-    this.http.post(this.url, newDish).subscribe(() => this.getDishesData());
+    console.log(newDish);
+    this.http.post(this.url, newDish).subscribe((data) => {
+      console.log(data);
+      this.getDishesData();
+    });
   }
 
   updateDish(dishId: string, newDish: Dishes): void {

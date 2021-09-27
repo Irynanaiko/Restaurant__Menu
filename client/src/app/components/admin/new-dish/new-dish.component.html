@@ -29,13 +29,14 @@
               </div>
             </span>
 
-            <span class="form-input">
+            <span class="form-input" *ngIf="!preview">
               <label for="img">Завантажити зображення:</label>
               <input class="form-control" 
                 id="img" 
-                type="text" 
+                type="file" 
                 name="img" 
                 formControlName="img" 
+                (change)="uploadFile($event)"
                
                 [ngClass]="{
                   'is-invalid': imgControl.invalid && (imgControl.dirty || imgControl.touched),
@@ -45,6 +46,17 @@
               <div class="invalid-feedback" *ngIf="imgControl.errors && (imgControl.dirty || imgControl.touched)">
                 <span *ngIf="imgControl.errors.required">Це поле є обов'язковим.</span>
               </div>
+            </span>
+            <span *ngIf="preview">
+              <img class="preview" [src]="preview" alt="img" />
+              <button
+                type="button"
+                class="close__btn"
+                (click)="clearImage()"
+              >
+              &times;
+              </button>
+
             </span>
 
             <span class="form-input">
