@@ -6,7 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { Categories } from 'src/app/core/interfaces';
 import { Dishes } from 'src/app/core/interfaces/dishes.interface';
+import { CategoriesService } from 'src/app/core/services/categories.service';
 
 @Component({
   selector: 'app-new-dish',
@@ -19,14 +21,26 @@ export class NewDishComponent implements OnInit {
   modalHeader: string;
   dish: Dishes;
   preview: string = '';
+  categoriesData: Array<Categories>;
 
-  constructor(private fb: FormBuilder, private bsmodalRef: BsModalRef) {}
+  constructor(
+    private fb: FormBuilder,
+    private bsmodalRef: BsModalRef,
+    private categoriesService: CategoriesService
+  ) {}
 
   ngOnInit(): void {
     this.createNewDishForm();
     if (this.dish) {
       this.preview = this.newDishForm.controls.img.value;
     }
+
+    this.getCategoriesData();
+  }
+  private getCategoriesData(): void {
+    this.categoriesService.categoriesData.subscribe((data) => {
+      this.categoriesData = data;
+    });
   }
 
   get nameControl(): any {

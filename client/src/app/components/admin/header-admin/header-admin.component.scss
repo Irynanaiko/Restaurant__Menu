@@ -25,6 +25,7 @@
     @include mQ(770px) {
       display: none;
     }
+
     &_item {
       &:not(:first-child) {
         margin-left: 7px;

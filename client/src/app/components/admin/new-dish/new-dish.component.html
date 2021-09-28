@@ -107,7 +107,7 @@
 
             <span class="form-input">
               <label for="categoryId">Категорія:</label>
-              <input class="form-control" 
+              <select class="form-control" 
                 id="categoryId" 
                 type="text" 
                 name="categoryId" 
@@ -117,6 +117,10 @@
                   'is-valid': categoryIdControl.valid && (categoryIdControl.dirty || categoryIdControl.touched)
                 }"
               >
+              <option class="category_option" [ngValue]="category.id" *ngFor="let category of categoriesData">
+                {{ category.name }}
+              </option>
+              </select>
               <div class="invalid-feedback" *ngIf="categoryIdControl.errors && (categoryIdControl.dirty || categoryIdControl.touched)">
                 <span *ngIf="categoryIdControl.errors.required">Це поле є обов'язковим.</span>
               </div>
