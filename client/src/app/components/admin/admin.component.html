@@ -18,7 +18,7 @@
                 <button class="edit__btn" (click)="editCategory(category)"></button>
             </li>
 
-            <li class="categories__list_item" 
+            <!-- <li class="categories__list_item" 
                 (click)="createNewCategory()"> 
                 Додати категорію
             </li>
@@ -27,20 +27,31 @@
             (click)="createNewDish()"
             >
                 Додати нову страву
-            </li>
+            </li> -->
         </ul>
    </div> 
 
-   <div class="container">
+   <div class="container group_btn">
     <form>
         <div class="form-group">
-          <input class="form-control"
+          <input class="form-control search-input btn"
                  name="search"
                  type="text"
                  placeholder="Пошук страви..."
                  [(ngModel)]="search" />
         </div>
     </form>
+
+    <button class="btn add-category" 
+        (click)="createNewCategory()"> 
+        Додати категорію
+    </button>
+
+    <button class="btn add-dish"
+        (click)="createNewDish()"
+    >
+        Додати нову страву
+    </button>
    </div>
 
 
@@ -48,12 +59,12 @@
         <ul class="row dishes__list">
             <li class="dish col" *ngFor="let dish of dishesData | filterDishes:search" [dish]="dish" >
                <div class="btns">
-                    <button class="btn edit"
+                    <button class="edit"
                     (click)="editDish(dish)"
                     >
                         <img src="../../../assets/img/edit.png">
                     </button>
-                    <button class="btn delete"
+                    <button class="delete"
                         (click)="openModalForDeleteDish(template)"
                     >
                         <img src="../../../assets/img/delete.png">

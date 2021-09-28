@@ -28,9 +28,7 @@ export class DishesService {
   }
 
   addNewDish(newDish: Dishes): void {
-    console.log(newDish);
     this.http.post(this.url, newDish).subscribe((data) => {
-      console.log(data);
       this.getDishesData();
     });
   }

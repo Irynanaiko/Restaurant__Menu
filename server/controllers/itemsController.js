@@ -27,18 +27,6 @@ class ItemsController {
                 return;
             }
 
-            // const { img } = req.body;
-            // if (!img.startsWith("http")) {
-            //   const response = await cloudinary.uploader.upload(img);
-            //   req.body.img = response.secure_url;
-            // }
-            // console.log(img);
-            // console.log(  GGGFFFFFFFFFF);
-            // const fileStr = req.body.img;
-            // const uploadResponse = await cloudinary.uploader(fileStr);
-            // req.body.fileStr = response.secure_url;
-            // console.log(uploadResponse);
-
             let {name, descr, weight, price, img, categoryId} = req.body;
         
             await Items.create({name, descr, weight, price, img, categoryId});
@@ -137,11 +125,8 @@ class ItemsController {
     
     uploadImage = async (req, res, next) => {
         const { img } = req.body;
-       
-        if (!img.startsWith("http")) {
           const response = await cloudinary.uploader.upload(img);
           req.body.img = response.secure_url;
-        }
         next();
     };
       

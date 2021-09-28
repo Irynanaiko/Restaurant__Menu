@@ -113,6 +113,11 @@
     }
   }
 }
+.edit,
+.delete {
+  background-color: transparent;
+  border: none;
+}
 .edit__btn {
   width: 45px;
   height: 25px;
@@ -135,19 +140,52 @@
   }
 }
 
-.form-control {
-  width: 30%;
-  @include mQ(1200px) {
-    width: 80%;
+.search-input {
+  &:focus {
+    background-color: transparent;
+    outline-color: $main-color;
   }
   @include mQ(810px) {
     width: 100%;
   }
+  &::placeholder {
+    color: #fff;
+  }
 }
-.form-control {
-  margin: 40px auto 0 auto;
-}
+
 .active {
   color: $main-color;
   border-color: $main-color;
+}
+.group_btn {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include mQ(810px) {
+    flex-direction: column;
+  }
+}
+.btn {
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 7px;
+  font-size: 18px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    color: $main-color;
+    border: 1px solid $main-color;
+  }
+  @include mQ(810px) {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+.add-category {
+  padding: 7px 20px;
+}
+.add-dish {
+  padding: 7px 20px;
 }
