@@ -5,7 +5,6 @@ const validation = require('../middleware/validation');
 const {itemCreateSchema, itemUpdateSchema} = require('../schema/itemsSchema');
 
 
-
 router.post('/', itemsController.uploadImage, validation(itemCreateSchema),  itemsController.addNewItem);
 router.get('/', itemsController.getAllItems);
 router.get('/:id', itemsController.getItemsByCategory);

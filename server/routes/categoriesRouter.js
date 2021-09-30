@@ -3,7 +3,7 @@ const router = new Router();
 const categoriesController = require('../controllers/categoriesController');
 const { createCategorySchema, updateCategorySchema} = require('../schema/categoriesSchema');
 const validation = require('../middleware/validation');
-// const authMiddleware = require('../middleware/authMiddleware');
+
 
 router.post('/', validation(createCategorySchema), categoriesController.addNewCategory);
 router.get('/', categoriesController.getAllCategories);

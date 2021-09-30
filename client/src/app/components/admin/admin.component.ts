@@ -41,12 +41,6 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  // getCategoriesData(): void {
-  //   this.categoriesService.getCategoriesData().subscribe((data) => {
-  //     this.categoriesData = data;
-  //   });
-  // }
-
   getDishesData(): void {
     this.dishesService.dishesData.subscribe((data) => {
       this.dishesData = data;
